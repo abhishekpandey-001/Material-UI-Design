@@ -47,121 +47,122 @@ export default function Sidebar() {
     };
 
     return (
-        <Box flex={1}>
-            <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                subheader={
-                    <ListSubheader component="div" id="nested-list-subheader">
-                        Options
-                    </ListSubheader>
-                }
-            >
-                <ListItemButton>
-                    <ListItemIcon>
-                        <SendIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Sent mail" />
-                </ListItemButton>
-                <ListItemButton>
-                    <ListItemIcon>
-                        <DraftsIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Spam" />
-                </ListItemButton>
+        <Box flex={1} sx={{
+            display: {
+                xs: 'none', md: 'block'
+            }
+        }}>
+            <Box position={'sticky'} top={70}>
+                <List
+                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <SendIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sent mail" />
+                    </ListItemButton>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <DraftsIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Spam" />
+                    </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon>
-                        <FolderCopyIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Copies" />
-                </ListItemButton>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <FolderCopyIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Copies" />
+                    </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon>
-                        <GradeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Favorites" />
-                </ListItemButton>
-
-
-                <ListItemButton>
-                    <ListItemIcon>
-                        <SearchIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Search" />
-                </ListItemButton>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <GradeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Favorites" />
+                    </ListItemButton>
 
 
-                <ListItemButton>
-                    <ListItemIcon>
-                        <WorkHistoryIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Recent Items" />
-                </ListItemButton>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <SearchIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Search" />
+                    </ListItemButton>
 
 
-                <ListItemButton>
-                    <ListItemIcon>
-                        <PushPinIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Pinned" />
-                </ListItemButton>
-
-                <ListItemButton>
-                    <ListItemIcon>
-                        <LabelImportantIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Important" />
-                </ListItemButton>
-
-                <ListItemButton>
-                    <ListItemIcon>
-                        <ModeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Drafts" />
-                </ListItemButton>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <WorkHistoryIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Recent Items" />
+                    </ListItemButton>
 
 
-                {/* Nested list with added handleClick function */}
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <PushPinIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Pinned" />
+                    </ListItemButton>
 
-                <ListItemButton onClick={handleClick}>
-                    <ListItemIcon>
-                        <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Inbox" />
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemIcon>
-                                <StarBorder />
-                            </ListItemIcon>
-                            <ListItemText primary="Starred" />
-                        </ListItemButton>
-                    </List>
-                </Collapse>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <LabelImportantIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Important" />
+                    </ListItemButton>
 
-                {/* Toggle button for dark and light mode */}
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <ModeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Drafts" />
+                    </ListItemButton>
 
 
-                <ListItem>
-                    <ListItemIcon>
-                        <DarkModeIcon />
-                    </ListItemIcon>
-                    <ListItemText id="switch-list-label-bluetooth" primary="Mode" />
-                    <Switch
-                        edge="end"
-                        onChange={handleToggle('mode')}
-                        checked={checked.includes('mode')}
-                        inputProps={{
-                            'aria-labelledby': 'switch-list-label-bluetooth',
-                        }}
-                    />
-                </ListItem>
-            </List>
+                    {/* Nested list with added handleClick function */}
+
+                    <ListItemButton onClick={handleClick}>
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Inbox" />
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemIcon>
+                                    <StarBorder />
+                                </ListItemIcon>
+                                <ListItemText primary="Starred" />
+                            </ListItemButton>
+                        </List>
+                    </Collapse>
+
+                    {/* Toggle button for dark and light mode */}
+
+
+                    <ListItem>
+                        <ListItemIcon>
+                            <DarkModeIcon />
+                        </ListItemIcon>
+                        <ListItemText id="switch-list-label-bluetooth" primary="Mode" />
+                        <Switch
+                            edge="end"
+                            onChange={handleToggle('mode')}
+                            checked={checked.includes('mode')}
+                            inputProps={{
+                                'aria-labelledby': 'switch-list-label-bluetooth',
+                            }}
+                        />
+                    </ListItem>
+                </List>
+            </Box>
         </Box>
     );
 }
